@@ -9,27 +9,29 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
 } from 'react-native';
 
 let Dimensions = require('Dimensions');
 let PixelRatio = require('PixelRatio');
 let totalWidth = Dimensions.get('window').width;
 let totalHeight = Dimensions.get('window').height;
+let componentWidth = totalWidth * 0.8;
+let leftStartPoint = totalWidth * 0.1;
 let pixelRatio = PixelRatio.get();
 
 export default class galler extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          pixelRatio = {pixelRatio};
+        <TextInput style={styles.numberInputStyle} placeholder={'Please input mobile number'}/>
+        <Text style={styles.textPromptStyle}>
+          The mobile number you have input:
         </Text>
-        <Text style={styles.instructions}>
-          totalHeight={totalHeight};
-        </Text>
-        <Text style={styles.instructions}>
-            totalWidth={totalWidth};
+        <TextInput style={styles.passwordInputStyle} placeholder={'Please enter password'} password={true}/>
+        <Text style={styles.bigTextPrompt}>
+          Submit
         </Text>
       </View>
     );
@@ -39,19 +41,38 @@ export default class galler extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'skyblue',
   },
-  welcome: {
+  numberInputStyle: {
+	  top: 40,
+    left: leftStartPoint,
+    width: componentWidth,
+    height: 60,
+    backgroundColor: 'powderblue',
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
-  instructions: {
+  textPromptStyle: {
+    top: 60,
+    left: leftStartPoint,
+    width: componentWidth,
+    fontSize: 20,
+  },
+  passwordInputStyle: {
+    top: 100,
+    left: leftStartPoint,
+    width: componentWidth,
+    height: 60,
+    backgroundColor: 'powderblue',
+    fontSize: 20,
+  },
+  bigTextPrompt: {
+    top: 140,
+    left: leftStartPoint,
+    width: componentWidth,
+    backgroundColor: 'steelblue',
+    color: 'white',
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    fontSize: 60,
   },
 });
 
