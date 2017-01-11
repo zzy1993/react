@@ -22,14 +22,34 @@ let leftStartPoint = totalWidth * 0.1;
 let pixelRatio = PixelRatio.get();
 
 export default class galler extends Component {
+  constructor(){
+    super();
+    this.state = {inputNum: '', inputPW: ''};
+  }
+  updateNum(newText) {
+    this.setState((state) => {
+      return {
+        inputNum: newText
+      };
+    });
+  }
+  updatePW(newText) {
+    this.setState((state) => {
+      return {
+        inputPW: newText
+      };
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.numberInputStyle} placeholder={'Please input mobile number'}/>
+        <TextInput style={styles.numberInputStyle} placeholder={'Please input mobile number'}
+                   onChangeText={(newText)=>this.updateNum(newText)}/>
         <Text style={styles.textPromptStyle}>
-          The mobile number you have input:
+          The mobile number you have input: {this.state.inputNum}
         </Text>
-        <TextInput style={styles.passwordInputStyle} placeholder={'Please enter password'} password={true}/>
+        <TextInput style={styles.passwordInputStyle} placeholder={'Please enter password'} password={true}
+                   onChangeText={(newText)=>this.updatePW(newText)}/>
         <Text style={styles.bigTextPrompt}>
           Submit
         </Text>
