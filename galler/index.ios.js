@@ -12,19 +12,24 @@ import {
   View
 } from 'react-native';
 
+let Dimensions = require('Dimensions');
+let PixelRatio = require('PixelRatio');
+let totalWidth = Dimensions.get('window').width;
+let totalHeight = Dimensions.get('window').height;
+let pixelRatio = PixelRatio.get();
+
 export default class galler extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          pixelRatio = {pixelRatio};
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          totalHeight={totalHeight};
         </Text>
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+            totalWidth={totalWidth};
         </Text>
       </View>
     );
