@@ -1,31 +1,40 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * Created by Aleph on 11/01/2017.
  */
-
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
  */
 
-import { AppRegistry, Navigator, BackAndroid } from 'react-native';
-var RegisterLeaf = require('./RegisterLeaf');
-var WaitingLeaf = require('./WaitingLeaf');
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+} from 'react-native';
 
-export default class galler extends Component {
-  configureScene(route){
-    return Navigator.SceneConfigs.FadeAndroid;
+let Dimensions = require('Dimensions');
+let PixelRatio = require('PixelRatio');
+let totalWidth = Dimensions.get('window').width;
+let totalHeight = Dimensions.get('window').height;
+let componentWidth = totalWidth * 0.8;
+let leftStartPoint = totalWidth * 0.1;
+let pixelRatio = PixelRatio.get();
+
+export default class RegisterLeaf extends Component {
+  constructor(){
+    super();
+    this.state = {inputNum: '', inputPW: ''};
   }
-  renderScene(router, navigator) {
-    this._navigator = navigator;
-    switch (router.name) {
-      case "register":
-        return <RegisterLeaf navigator={navigator}/>;
-      case "waiting":
-        return <WaitingLeaf phoneNumber={router.phoneNumber} userPW={router.userPW} navigator={navigator}/>;
-    }
+  updateNum(newText) {
+    this.setState((state) => {
+      return {
+        inputNum: newText
+      };
+    });
   }
   updatePW(newText) {
     this.setState((state) => {
@@ -90,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('galler', () => NaviModule);
+module.exports = RegisterLeaf;
